@@ -9,4 +9,9 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  
+  {
+    "tpope/vim-surround",
+    event = "BufEnter",
+  } -- Quick parentheses
 }
