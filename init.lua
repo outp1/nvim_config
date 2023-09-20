@@ -50,7 +50,30 @@ return {
     },
     -- enable servers that you already have installed without mason
     servers = {
-      -- "pyright"
+      "pylsp", -- TODO: delete if not necessery
+    },
+    setup_handlers = {
+      pylsp = function(_, opts)
+        require("lspconfig").pylsp.setup {
+          on_attach = require("astronvim.utils.lsp").on_attach,
+          settings = {
+            pylsp = {
+              plugins = {
+                -- linter options
+                flake8 = { enabled = true },
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                -- type checker
+                pylsp_mypy = { enabled = true },
+                -- auto-completion options
+                jedi_completion = { fuzzy = true },
+                rope_autoimport = { enabled = true, memory = true },
+              },
+            },
+          },
+          capabilities = require("astronvim.utils").capabilities,
+        }
+      end,
     },
   },
 
@@ -81,5 +104,17 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    -- require('lspconfig').pylsp.setup{
+    --   settings = {
+    --     pylsp = {
+    --       plugins = {
+    --         pycodestyle = {
+    --           enabled = false,
+    --         }
+    --       }
+    --     }
+    --   }
+    -- }
+    --     print(vim.inspect(require('lspconfig').pylsp))
   end,
 }
