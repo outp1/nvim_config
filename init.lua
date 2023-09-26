@@ -49,9 +49,14 @@ return {
       -- end
     },
     -- enable servers that you already have installed without mason
+    on_attach = function(client, bufnr)
+      require("lsp_signature").on_attach({ floating_window_above_cur_line = true }, bufnr)
+    end,
+
     servers = {
       "pylsp", -- TODO: delete if not necessery
     },
+
     setup_handlers = {
       pylsp = function(_, opts)
         require("lspconfig").pylsp.setup {
@@ -65,8 +70,13 @@ return {
                 pycodestyle = { enabled = false },
                 -- type checker
                 pylsp_mypy = { enabled = true },
+                -- formatters
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+                black = { enabled = false },
                 -- auto-completion options
                 jedi_completion = { fuzzy = true },
+                rope_completion = { enabled = true },
                 rope_autoimport = { enabled = true, memory = true },
               },
             },
