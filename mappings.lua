@@ -46,8 +46,14 @@ return {
     -- Telescope
     ["<leader><leader>"] = {
       function() require("telescope.builtin").find_files() end,
-      desc = "Find files" 
+      desc = "Find files"
     },
+
+    -- Doge docstrings autogenerate
+    ["<leader>lg"] = {
+      "<cmd>DogeGenerate<cr>",
+      desc = "Generate docstrings"
+    }
   },
   t = {
     -- setting a mapping to false will disable it

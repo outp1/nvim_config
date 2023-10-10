@@ -22,4 +22,10 @@ return {
     config = function(_, opts) require("lsp_signature").setup(opts) end,
   },
 
+  {
+    "kkoomen/vim-doge",
+    event = "VeryLazy",
+    build = ":call doge#install()"
+  }
+
 }
