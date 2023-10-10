@@ -54,36 +54,36 @@ return {
     end,
 
     servers = {
-      "pylsp", -- TODO: delete if not necessery
+      -- "pylsp", -- TODO: delete if not necessery
     },
 
     setup_handlers = {
-      pylsp = function(_, opts)
-        require("lspconfig").pylsp.setup {
-          on_attach = require("astronvim.utils.lsp").on_attach,
-          settings = {
-            pylsp = {
-              plugins = {
-                -- linter options
-                flake8 = { enabled = true },
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                -- type checker
-                pylsp_mypy = { enabled = true },
-                -- formatters
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                black = { enabled = false },
-                -- auto-completion options
-                jedi_completion = { fuzzy = true },
-                rope_completion = { enabled = true },
-                rope_autoimport = { enabled = true, memory = true },
-              },
-            },
-          },
-          capabilities = require("astronvim.utils").capabilities,
-        }
-      end,
+      -- pylsp = function(_, opts)
+      --   require("lspconfig").pylsp.setup {
+      --     on_attach = require("astronvim.utils.lsp").on_attach,
+      --     settings = {
+      --       pylsp = {
+      --         plugins = {
+      --           -- linter options
+      --           flake8 = { enabled = true },
+      --           pyflakes = { enabled = false },
+      --           pycodestyle = { enabled = false },
+      --           -- type checker
+      --           pylsp_mypy = { enabled = true },
+      --           -- formatters
+      --           autopep8 = { enabled = false },
+      --           yapf = { enabled = false },
+      --           black = { enabled = false },
+      --           -- auto-completion options
+      --           jedi_completion = { fuzzy = true },
+      --           rope_completion = { enabled = false },
+      --           rope_autoimport = { enabled = true, memory = false },
+      --         },
+      --       },
+      --     },
+      --     capabilities = require("astronvim.utils").capabilities,
+      --   }
+      -- end,
     },
   },
 
